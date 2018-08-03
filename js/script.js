@@ -50,15 +50,22 @@ function getData() {
 
 
       for(var i = 0; i < data.items.length; i++){
+
+        var albumArtwork = document.createElement('div');
         var nameOfAlbum = document.createElement('div');
         var totalTracks = document.createElement('div');
-        var albumArtwork = document.createElement('div');
 
-        nameOfAlbum.textContent = data.items[i].name;
-        totalTracks.textContent = data.items[i].total_tracks;
-        albumArtwork.innerHTML = '<img src="' + data.items[i].images[1].url + '">';
+        nameOfAlbum.style.marginTop = '2em';
+        albumArtwork.style.boxShadow = 'rgb(0, 0, 0) -7px 8px 25px 0px';
+        totalTracks.textContent = 'Amount of Tracks: ' + data.items[i].total_tracks;
+        albumArtwork.style.width = '200px';
+        albumArtwork.style.height = '200px';
+        albumArtwork.style.margin = '0 auto';
+        albumArtwork.innerHTML = '<img src="' + data.items[i].images[1].url + '" width="200" height="200">';
 
-        // submitBtn.after(nameOfAlbum, totalTracks, albumArtwork);
+        nameOfAlbum.textContent = 'Album: ' + data.items[i].name;
+
+        submitBtn.after(nameOfAlbum, totalTracks, albumArtwork);
 
         console.dir(albumArtwork);
 
