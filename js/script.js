@@ -55,12 +55,12 @@ function getData() {
         var nameOfAlbum = document.createElement('div');
         var totalTracks = document.createElement('div');
 
-        nameOfAlbum.style.marginTop = '2em';
-        albumArtwork.style.boxShadow = 'rgb(0, 0, 0) -7px 8px 25px 0px';
+        nameOfAlbum.style.marginTop = '3em';
+        albumArtwork.style.boxShadow = 'rgb(0, 0, 0) -6px 10px 35px -7px';
         totalTracks.textContent = 'Amount of Tracks: ' + data.items[i].total_tracks;
         albumArtwork.style.width = '200px';
         albumArtwork.style.height = '200px';
-        albumArtwork.style.margin = '0 auto';
+        albumArtwork.style.margin = '0.8em auto';
         albumArtwork.innerHTML = '<img src="' + data.items[i].images[1].url + '" width="200" height="200">';
 
         nameOfAlbum.textContent = 'Album: ' + data.items[i].name;
@@ -78,10 +78,7 @@ function getData() {
   })
 }
 
-
-
-
   // Create a search
-  // if ____ is searched then show that value inputs option. for loop?
+  // if Still Got Tme is searched then show that value inputs option. else 'oops thsi doesnt exist'
 
 }()); // IIFE ends
