@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.container {
+  width: 85vw;
+  height: 100vh;
+  margin: 0 auto;
+  color: white;
+  font-family: 'Sarala', sans-serif;
+  text-align: center;
+}
+
+.h1 {
+  margin-top: 0.8em;
+  color: white;
+  font-size: 3em;
+  /* text-align: center; */
+  font-family: 'Faster One', cursive;
+  text-transform: uppercase;
+}
+
+.description {
+  margin: 1em 0 3em 0;
+}
+
+.searchInput {
+  width: 80vw;
+  height: 6vh;
+}
+
+.searchBtn {
+  float: left;
+  padding: 0.7em 4em;
+  margin: 2em;
+  border-radius: 1em;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: white;
+  border: 0.2em solid white;
+  background-color: transparent;
+  cursor: pointer
+}
+
+.icon {
+  display: flex;
+  /* margin-right: 0.6em; */
+}
