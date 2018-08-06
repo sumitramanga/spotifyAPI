@@ -44,31 +44,39 @@ function getData() {
       $('#searchForm').submit(function() {
         event.preventDefault();
         var inputVal = $('#searchInput').val();
+        // for loop for creating elements
+        for(var i = 0; i < data.items.length; i++){
+
+          if (inputVal === data.items[i].name) {
+
+            var albumArtwork = document.createElement('div');
+            var nameOfAlbum = document.createElement('div');
+            var totalTracks = document.createElement('div');
+
+            // Adding class to the created elements to add styling
+            albumArtwork.setAttribute('class', 'albumArtwork');
+            nameOfAlbum.setAttribute('class', 'nameOfAlbum');
+            totalTracks.setAttribute('class', 'totalTracks');
+
+            totalTracks.innerHTML = 'Amount of Tracks: ' + data.items[i].total_tracks
+            albumArtwork.innerHTML = '<img src="' + data.items[i].images[1].url + '" width="200" height="200">';
+            nameOfAlbum.textContent = 'Album: ' + data.items[i].name;
+
+            // Adding content after the submit button
+            submitBtn.after(nameOfAlbum, totalTracks, albumArtwork);
+            console.dir(totalTracks);
+            console.log(data.items);
+          } else {
+            var errorMessage = document.createElement('div');
+            errorMessage.textContent = 'Hmmm... It looks like that search doesn\'t exists';
+            submitBtn.after(errorMessage);
+          }
+          // if inputVal = mind of mine show it
+        }
       })
 
 
-      for(var i = 0; i < data.items.length; i++){
-
-        var albumArtwork = document.createElement('div');
-        var nameOfAlbum = document.createElement('div');
-        var totalTracks = document.createElement('div');
-
-        nameOfAlbum.style.marginTop = '3em';
-        albumArtwork.style.boxShadow = 'rgb(0, 0, 0) -6px 10px 35px -7px';
-        totalTracks.textContent = 'Amount of Tracks: ' + data.items[i].total_tracks;
-        albumArtwork.style.width = '200px';
-        albumArtwork.style.height = '200px';
-        albumArtwork.style.margin = '0.8em auto';
-        albumArtwork.innerHTML = '<img src="' + data.items[i].images[1].url + '" width="200" height="200">';
-
-        nameOfAlbum.textContent = 'Album: ' + data.items[i].name;
-
-        submitBtn.after(nameOfAlbum, totalTracks, albumArtwork);
-
-        console.dir(albumArtwork);
-
-      }
-    },
+    }, // success ends
     error: function(error) {
       console.log(error);
       console.log('There is an error loading the API');
