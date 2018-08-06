@@ -28,10 +28,8 @@
 
 function getData() {
   $.ajax({
-    url: 'https://api.spotify.com/v1/artists/5ZsFI1h6hIdQRw2ti0hz81/albums?include_groups=album%2Csingle&market=NZ&limit=10',
-    headers: {
-      'Authorization': 'Bearer ' + key
-    },
+    // syntax to apply key is 'access_token'
+    url: 'https://api.spotify.com/v1/artists/5ZsFI1h6hIdQRw2ti0hz81/albums?include_groups=album%2Csingle&market=NZ&limit=10&access_token=' + key,
     dataType: 'json',
     type: 'GET',
     success: function(data) {
