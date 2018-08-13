@@ -3,7 +3,7 @@
   var key;
 
   var searchInput = document.getElementById('searchInput');
-  var submitBtn = document.getElementById('searchBtn');
+  var searchForm = document.getElementById('searchForm');
 
   // Init key to get ajax in the console
   $.ajax({
@@ -43,7 +43,12 @@ function getData() {
 
       $('#searchForm').submit(function() {
         event.preventDefault();
+
+        // Remove previous results
+        $('.result').remove();
+
         var inputVal = $('#searchInput').val();
+
         // for loop for creating elements
         for(var i = 0; i < data.items.length; i++){
 
@@ -54,24 +59,23 @@ function getData() {
             var totalTracks = document.createElement('div');
 
             // Adding class to the created elements to add styling
-            albumArtwork.setAttribute('class', 'albumArtwork');
-            nameOfAlbum.setAttribute('class', 'nameOfAlbum');
-            totalTracks.setAttribute('class', 'totalTracks');
+            albumArtwork.setAttribute('class', 'albumArtwork result');
+            nameOfAlbum.setAttribute('class', 'nameOfAlbum result');
+            totalTracks.setAttribute('class', 'totalTracks result');
 
             totalTracks.innerHTML = 'Amount of Tracks: ' + data.items[i].total_tracks
-            albumArtwork.innerHTML = '<img src="' + data.items[i].images[1].url + '" width="200" height="200">';
+            albumArtwork.innerHTML = '<img src="' + data.items[i].images[1].url + '" width="200" height="200" alt="' + data.items[i].name + '">';
             nameOfAlbum.textContent = 'Album: ' + data.items[i].name;
 
             // Adding content after the submit button
-            submitBtn.after(nameOfAlbum, totalTracks, albumArtwork);
+            searchForm.after(nameOfAlbum, totalTracks, albumArtwork);
             console.dir(totalTracks);
             console.log(data.items);
           } else {
-            var errorMessage = document.createElement('div');
-            errorMessage.textContent = 'Hmmm... It looks like that search doesn\'t exists';
-            submitBtn.after(errorMessage);
+            // var errorMessage = document.createElement('div');
+            // errorMessage.textContent = 'Hmmm... It looks like that search doesn\'t exists';
+            // searchForm.after(errorMessage);
           }
-          // if inputVal = mind of mine show it
         }
       })
 
